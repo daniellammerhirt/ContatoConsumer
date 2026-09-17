@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=no">
+    <title>Contatos</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<navbar>
+    <a th:href="@{/person}">Contatos</a>
+    <a th:href="@{/contato/new}">Novo</a>
+</navbar>
+<tr th:each=" contato : ${listContato}">
+    <lista>
+        <a th:href="@{'/contato/' + ${contato.id} + '/view'}" th:text="${contato.nome}"/>
+    <actions>
+        <a th:href="@{'/contato/' + ${contato.id} + '/edit'}">Editar</a>
+        <a th:href="@{'/contato/' + ${contato.id} + '/delete'}">Delete</a>
+    </actions>
+    </lista>
+</tr>
+</body>
+</html>

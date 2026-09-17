@@ -6,9 +6,7 @@ import com.info.contatoconsumer.service.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/contato")
@@ -29,10 +27,22 @@ public class ContatoController {
         return "contato/list";
     }
 
+    @PostMapping("/save")
+    public String saveContato(@ModelAttribute("contato") Contato contato){
+        contatoService.save(contato);
+        return "redirect:/contato";
+    }
+
     @GetMapping("/{id}/edit")
     public String editContato(@PathVariable("id") Integer id, Model model){
         model.addAttribute("contato", contatoService.findById(id));
-        return "redirect:/contato";
+        return "contato/form";
+    }
+
+    @GetMapping("/{id}/view")
+    public String viewContato(@PathVariable("id") Integer id, Model model){
+        model.addAttribute("contato", contatoService.findById(id));
+        return "contato/view";
     }
 
     @GetMapping("/{id}/delete")

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=no">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<navbar>
+    <a th:href="@{/contato/new}">Cadastro</a>
+</navbar>
+
+<a th:href="@{/contato}" class="botao">Voltar</a>
+
+<form th:object="${contato}" th:action="@{/contato/save}" method="POST">
+    <container>
+        <label>Nome</label>
+        <input type="text" th:field="*{nome}">
+        <label>Telefone</label>
+        <input type="text" th:field="*{telefone}">
+        <label>Email</label>
+        <input type="text" th:field="*{email}">
+        <button type="submit">Salvar</button>
+    </container>
+</form>
+</body>
+</html>

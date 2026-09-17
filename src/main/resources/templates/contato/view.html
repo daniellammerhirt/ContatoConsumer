@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<navbar>
+    <a th:href="@{'/contato/' + ${contato.id} + '/view'}">Contato</a>
+</navbar>
+<form th:object="${contato}">
+    <container>
+        <label>Nome</label>
+        <input type="text" th:value="*{nome}" readonly>
+        <label>Telefone</label>
+        <input type="text" th:value="*{telefone}" readonly>
+        <label>Email</label>
+        <input type="text" th:value="*{email}" readonly>
+    </container>
+</form>
+</body>
+</html>

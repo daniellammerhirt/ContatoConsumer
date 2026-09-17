@@ -2,16 +2,16 @@ package com.info.contatoconsumer.model;
 
 public class Contato {
     private Integer id;
-    private String name;
-    private String phone;
+    private String nome;
+    private String telefone;
     private String email;
 
     public Contato(){}
 
     public Contato(Integer id, String name, String phone, String email){
         this.id = id;
-        this.name = name;
-        this.phone = phone;
+        this.setNome(getNome());
+        this.setTelefone(getTelefone());
         this.email = email;
     }
 
@@ -23,21 +23,6 @@ public class Contato {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String getEmail() {
         return email;
@@ -45,5 +30,21 @@ public class Contato {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }
