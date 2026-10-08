@@ -23,6 +23,7 @@ public class ContatoService {
     public Contato findById(Integer id){
         Mono<Contato> monoContato = this.webClient.method(HttpMethod.GET).
                 uri(uri + "/" + id).
+                headers(headers -> headers.setBasicAuth("admin", "pindamonhangaba")).
                 retrieve().
                 bodyToMono(Contato.class);
         return monoContato.block();
@@ -31,6 +32,7 @@ public class ContatoService {
     public List<Contato> findAll(){
         Mono<List<Contato>> monoListContato = this.webClient.method(HttpMethod.GET).
                 uri(uri).
+                headers(headers -> headers.setBasicAuth("admin", "pindamonhangaba")).
                 retrieve().
                 bodyToFlux(Contato.class).collectList();
         return monoListContato.block();
@@ -39,6 +41,7 @@ public class ContatoService {
     public Contato save(Contato contato){
         Mono<Contato> monoContato = this.webClient.method(HttpMethod.POST).
                 uri(uri).
+                headers(headers -> headers.setBasicAuth("admin","pindamonhangaba")).
                 body(BodyInserters.fromValue(contato)).
                 retrieve().
                 bodyToMono(Contato.class);
@@ -47,7 +50,9 @@ public class ContatoService {
 
     public Void delete(Integer id){
         Mono<Void> monoVoid = this.webClient.method(HttpMethod.DELETE).
-                uri(uri + "/" + id).retrieve().bodyToMono(Void.class);
+                uri(uri + "/" + id).
+                headers(headers -> headers.setBasicAuth("admin", "pindamonhangaba")).
+                retrieve().bodyToMono(Void.class);
         return monoVoid.block();
     }
 }
